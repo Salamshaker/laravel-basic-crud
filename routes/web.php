@@ -11,14 +11,14 @@
 |
 */
 
-//Route::get('/', 'indexController@index');
-//Route::delete('/{id}', 'indexController@delete')->where('id', '[0-9]+');
-//Route::put('/{id}', 'indexController@edit')->where('id', '[0-9]+');
-
 Route::get('/', function () {
     return redirect()->route('users.index');
 });
+
 Route::resource('/users', 'UsersController', [
+    'except' => [
+        'create', 'show', 'edit'
+    ],
     'names' => [
         'index' => 'users.index',
     ]
