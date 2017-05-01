@@ -21,6 +21,6 @@ $ cp .env.example .env
 #Edit .env file with database credentials here
 $ php artisan key:generate
 $ php artisan migrate
-$ php artisan db:Seed --class=UsersTableSeeder
+$ php artisan db:seed --class=UsersTableSeeder
 $ php artisan serve --port=9999
 ```
