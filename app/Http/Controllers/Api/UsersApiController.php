@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use \App\User;
 
 class UsersApiController extends Controller
@@ -74,5 +75,15 @@ class UsersApiController extends Controller
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
+    }
+
+    public function getOptions($id = null, Response $response, Request $request){
+        $origin = $request->header('origin') ?: $request->url();
+
+        $response->header('Access-Control-Allow-Origin', $origin);
+        $response->header('Access-Control-Allow-Headers', 'origin, content-type, accept');
+        $response->header('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS, POST, PATCH, DELETE');
+
+        return $response;
     }
 }

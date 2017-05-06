@@ -12,5 +12,7 @@
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::options('user', 'UsersApiController@getOptions', ['middleware'=>'cors']);
+Route::options('user/{id}', 'UsersApiController@getOptions', ['middleware'=>'cors']);
+Route::resource('user', 'UsersApiController', ['middleware'=>'cors']);
 
-Route::resource('user', 'UsersApiController');
